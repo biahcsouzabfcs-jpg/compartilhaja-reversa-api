@@ -4,10 +4,10 @@ import br.com.fiap.compartilhaja.dto.EquipamentoRequestDTO;
 import br.com.fiap.compartilhaja.dto.EquipamentoResponseDTO;
 import br.com.fiap.compartilhaja.model.Equipamento;
 import br.com.fiap.compartilhaja.repository.EquipamentoRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +24,20 @@ public class EquipamentoService {
 
     public EquipamentoRequestDTO cadastrarEquipamento(EquipamentoRequestDTO equipamentoDTO) {
 
+        // Mapeamento explícito: BeanUtils não funciona com records (não possuem getters),
+        // e o campo do DTO (estadoConservacao) tem nome diferente da entidade (estadoConvervacao).
         Equipamento equipamento = new Equipamento();
-        BeanUtils.copyProperties(equipamentoDTO, equipamento);
+        equipamento.setNome(equipamentoDTO.nome());
+        equipamento.setCategoria(equipamentoDTO.categoria());
+        equipamento.setMarca(equipamentoDTO.marca());
+        equipamento.setModelo(equipamentoDTO.modelo());
+        equipamento.setPesoKg(equipamentoDTO.pesoKg());
+        equipamento.setEstadoConvervacao(equipamentoDTO.estadoConservacao());
+        equipamento.setStatus(equipamentoDTO.status());
+        equipamento.setNomeProprietario(equipamentoDTO.nomeProprietario());
+        equipamento.setEmailProprietario(equipamentoDTO.emailProprietario());
+        equipamento.setDataCadastro(LocalDate.now());
+
         Equipamento equipamentoSalvo = equipamentoRepository.save(equipamento);
         return new EquipamentoRequestDTO(equipamentoSalvo);
     }

@@ -19,7 +19,7 @@
       "name": "Base Environment",
       "data": {
         "base_url": "http://localhost:8080",
-        "token": "{% response 'body', 'req_auth_login', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        "token": ""
       },
       "dataPropertyOrder": {
         "&": [
