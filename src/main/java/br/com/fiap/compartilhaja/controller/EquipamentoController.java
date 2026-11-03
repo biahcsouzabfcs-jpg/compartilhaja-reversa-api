@@ -30,7 +30,7 @@ public class EquipamentoController {
 
     // Endpoint para atualizar informações do equipamento
 
-    @PostMapping("/equipamentos")
+    @PutMapping("/equipamentos")
     @ResponseStatus(HttpStatus.OK)
     public Equipamento atualizar(@RequestBody Equipamento equipamento) {
         return equipamentoService.atualizarEquipamento(equipamento);
