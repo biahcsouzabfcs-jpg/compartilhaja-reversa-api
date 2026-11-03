@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Estágio 2: Imagem final leve para execução (JRE 17)
+# Estágio 2: Imagem final leve para execução (JRE 21)
 FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 
