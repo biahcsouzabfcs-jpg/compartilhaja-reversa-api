@@ -47,6 +47,10 @@ public class EquipamentoService {
     public Equipamento atualizarEquipamento (Equipamento equipamento) {
         Optional<Equipamento> equipamentoExiste = equipamentoRepository.findById(equipamento.getEquipamentoId());
         if (equipamentoExiste.isPresent()) {
+            // data_cadastro é NOT NULL e normalmente não vem no JSON de atualização: mantém a data original
+            if (equipamento.getDataCadastro() == null) {
+                equipamento.setDataCadastro(equipamentoExiste.get().getDataCadastro());
+            }
             return equipamentoRepository.save(equipamento);
         } else{
             throw new RuntimeException("Equipamento não encontrado!");
