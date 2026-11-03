@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Variáveis locais (senhas)
+.env
