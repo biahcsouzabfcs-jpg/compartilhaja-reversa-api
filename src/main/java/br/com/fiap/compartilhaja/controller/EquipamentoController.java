@@ -5,6 +5,7 @@ import br.com.fiap.compartilhaja.dto.EquipamentoRequestDTO;
 import br.com.fiap.compartilhaja.dto.EquipamentoResponseDTO;
 import br.com.fiap.compartilhaja.model.Equipamento;
 import br.com.fiap.compartilhaja.service.EquipamentoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class EquipamentoController {
 
     @PostMapping("/equipamentos")
     @ResponseStatus(HttpStatus.CREATED)
-    public EquipamentoRequestDTO salvar(@RequestBody EquipamentoRequestDTO equipamentoCadastroDTO) {
+    public EquipamentoRequestDTO salvar(@Valid @RequestBody EquipamentoRequestDTO equipamentoCadastroDTO) {
         return equipamentoService.cadastrarEquipamento(equipamentoCadastroDTO);
     }
 
@@ -32,7 +33,7 @@ public class EquipamentoController {
 
     @PutMapping("/equipamentos")
     @ResponseStatus(HttpStatus.OK)
-    public Equipamento atualizar(@RequestBody Equipamento equipamento) {
+    public Equipamento atualizar(@Valid @RequestBody Equipamento equipamento) {
         return equipamentoService.atualizarEquipamento(equipamento);
     }
 

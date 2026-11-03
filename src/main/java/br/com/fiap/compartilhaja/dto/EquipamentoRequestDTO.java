@@ -26,7 +26,20 @@ public record EquipamentoRequestDTO(
 
         @NotBlank(message = "Estado de conservação é obrigatório")
         @Size(min = 3, max = 255, message = "Estado de conservação deve ter entre 3 e 255 caracteres")
-        String estadoConservacao
+        String estadoConservacao,
+
+        @NotBlank(message = "Status é obrigatório")
+        @Size(min = 3, max = 255, message = "Status deve ter entre 3 e 255 caracteres")
+        String status,
+
+        @NotBlank(message = "Nome do proprietário é obrigatório")
+        @Size(min = 3, max = 255, message = "Nome do proprietário deve ter entre 3 e 255 caracteres")
+        String nomeProprietario,
+
+        @NotBlank(message = "E-mail do proprietário é obrigatório")
+        @Email(message = "E-mail do proprietário inválido")
+        @Size(max = 255, message = "E-mail deve ter no máximo 255 caracteres")
+        String emailProprietario
 ) {
     public EquipamentoRequestDTO(Equipamento equipamento){
         this(
@@ -35,7 +48,10 @@ public record EquipamentoRequestDTO(
                 equipamento.getMarca(),
                 equipamento.getModelo(),
                 equipamento.getPesoKg(),
-                equipamento.getEstadoConvervacao()
+                equipamento.getEstadoConvervacao(),
+                equipamento.getStatus(),
+                equipamento.getNomeProprietario(),
+                equipamento.getEmailProprietario()
         );
     }
 }

@@ -5,6 +5,7 @@ import br.com.fiap.compartilhaja.dto.NotificacaoRequestDTO;
 import br.com.fiap.compartilhaja.dto.NotificacaoResponseDTO;
 import br.com.fiap.compartilhaja.model.Notificacao;
 import br.com.fiap.compartilhaja.service.NotificacaoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class NotificacaoController {
 
     @PostMapping("/notificacoes")
     @ResponseStatus(HttpStatus.CREATED)
-    public NotificacaoRequestDTO salvar(@RequestBody NotificacaoRequestDTO notificacaoCadastroDTO) {
+    public NotificacaoRequestDTO salvar(@Valid @RequestBody NotificacaoRequestDTO notificacaoCadastroDTO) {
         return notificacaoService.cadastrarNotificacao(notificacaoCadastroDTO);
     }
 
@@ -32,7 +33,7 @@ public class NotificacaoController {
 
     @PutMapping("/notificacoes")
     @ResponseStatus(HttpStatus.OK)
-    public Notificacao atualizar(@RequestBody Notificacao notificacao) {
+    public Notificacao atualizar(@Valid @RequestBody Notificacao notificacao) {
         return notificacaoService.atualizarNotificacao(notificacao);
     }
 
