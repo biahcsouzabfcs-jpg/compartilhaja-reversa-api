@@ -5,6 +5,7 @@ import br.com.fiap.compartilhaja.dto.DescarteRequestDTO;
 import br.com.fiap.compartilhaja.dto.DescarteResponseDTO;
 import br.com.fiap.compartilhaja.model.Descarte;
 import br.com.fiap.compartilhaja.service.DescarteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class DescarteController {
 
     @PostMapping("/descartes")
     @ResponseStatus(HttpStatus.CREATED)
-    public DescarteRequestDTO salvar(@RequestBody DescarteRequestDTO descarteCadastroDTO) {
+    public DescarteRequestDTO salvar(@Valid @RequestBody DescarteRequestDTO descarteCadastroDTO) {
         return descarteService.cadastrarDescarte(descarteCadastroDTO);
     }
 
@@ -32,7 +33,7 @@ public class DescarteController {
 
     @PutMapping("/descartes")
     @ResponseStatus(HttpStatus.OK)
-    public Descarte atualizar(@RequestBody Descarte descarte) {
+    public Descarte atualizar(@Valid @RequestBody Descarte descarte) {
         return descarteService.atualizarDescarte(descarte);
     }
 

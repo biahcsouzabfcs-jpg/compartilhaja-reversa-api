@@ -5,6 +5,7 @@ import br.com.fiap.compartilhaja.dto.InspecaoRequestDTO;
 import br.com.fiap.compartilhaja.dto.InspecaoResponseDTO;
 import br.com.fiap.compartilhaja.model.Inspecao;
 import br.com.fiap.compartilhaja.service.InspecaoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class InspecaoController {
 
     @PostMapping("/inspecoes")
     @ResponseStatus(HttpStatus.CREATED)
-    public InspecaoRequestDTO salvar(@RequestBody InspecaoRequestDTO inspecaoCadastroDTO) {
+    public InspecaoRequestDTO salvar(@Valid @RequestBody InspecaoRequestDTO inspecaoCadastroDTO) {
         return inspecaoService.cadastrarInspecao(inspecaoCadastroDTO);
     }
 
@@ -32,7 +33,7 @@ public class InspecaoController {
 
     @PutMapping("/inspecoes")
     @ResponseStatus(HttpStatus.OK)
-    public Inspecao atualizar(@RequestBody Inspecao inspecao) {
+    public Inspecao atualizar(@Valid @RequestBody Inspecao inspecao) {
         return inspecaoService.atualizarInspecao(inspecao);
     }
 

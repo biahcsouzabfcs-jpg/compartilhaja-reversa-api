@@ -5,6 +5,7 @@ import br.com.fiap.compartilhaja.dto.PontoColetaRequestDTO;
 import br.com.fiap.compartilhaja.dto.PontoColetaResponseDTO;
 import br.com.fiap.compartilhaja.model.PontoColeta;
 import br.com.fiap.compartilhaja.service.PontoColetaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class PontoColetaController {
 
     @PostMapping("/pontos-coleta")
     @ResponseStatus(HttpStatus.CREATED)
-    public PontoColetaRequestDTO salvar(@RequestBody PontoColetaRequestDTO pontoColetaCadastroDTO) {
+    public PontoColetaRequestDTO salvar(@Valid @RequestBody PontoColetaRequestDTO pontoColetaCadastroDTO) {
         return pontoColetaService.cadastrarPontoColeta(pontoColetaCadastroDTO);
     }
 
@@ -32,7 +33,7 @@ public class PontoColetaController {
 
     @PutMapping("/pontos-coleta")
     @ResponseStatus(HttpStatus.OK)
-    public PontoColeta atualizar(@RequestBody PontoColeta pontoColeta) {
+    public PontoColeta atualizar(@Valid @RequestBody PontoColeta pontoColeta) {
         return pontoColetaService.atualizarPontoColeta(pontoColeta);
     }
 
