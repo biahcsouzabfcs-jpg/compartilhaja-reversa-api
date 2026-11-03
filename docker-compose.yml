@@ -31,6 +31,8 @@ services:
         condition: service_healthy
     environment:
       - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
+      - API_USERNAME=${API_USERNAME:-igor}
+      - API_PASSWORD=${API_PASSWORD:?Defina API_PASSWORD no ambiente ou arquivo .env}
       - SPRING_DATASOURCE_USERNAME=compartilhaja_user
       - SPRING_DATASOURCE_PASSWORD=oracle
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=oracle.jdbc.OracleDriver
