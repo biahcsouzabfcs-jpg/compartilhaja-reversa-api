@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   oracle-db:
     image: gvenzl/oracle-free:latest
@@ -13,10 +11,10 @@ services:
     volumes:
       - oracle_data:/opt/oracle/oradata
     healthcheck:
-      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -s $$APP_USER/$$APP_USER_PASSWORD@//localhost:1521/FREEPDB1"]
-      interval: 15s
-      timeout: 10s
-      retries: 10
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
       start_period: 40s
     networks:
       - app-network
