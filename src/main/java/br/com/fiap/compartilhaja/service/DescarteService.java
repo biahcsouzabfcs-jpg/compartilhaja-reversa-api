@@ -37,7 +37,7 @@ public class DescarteService {
         if (descarteExiste.isPresent()) {
             return descarteRepository.save(descarte);
         } else{
-            throw new RuntimeException("Descarte não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Descarte não encontrado!");
         }
     }
 
@@ -47,7 +47,7 @@ public class DescarteService {
         if (descarteExiste.isPresent()) {
             descarteRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Descarte não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Descarte não encontrado!");
         }
     }
 
@@ -57,7 +57,7 @@ public class DescarteService {
         if (descarteExiste.isPresent()) {
             return new DescarteResponseDTO(descarteExiste.get());
         }  else {
-            throw new RuntimeException("Descarte não existe!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Descarte não existe!");
         }
     }
 

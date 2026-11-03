@@ -37,7 +37,7 @@ public class PontoColetaService {
         if (pontoColetaExiste.isPresent()) {
             return pontoColetaRepository.save(pontoColeta);
         } else{
-            throw new RuntimeException("Ponto de coleta não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Ponto de coleta não encontrado!");
         }
     }
 
@@ -47,7 +47,7 @@ public class PontoColetaService {
         if (pontoColetaExiste.isPresent()) {
             pontoColetaRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Ponto de coleta não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Ponto de coleta não encontrado!");
         }
     }
 
@@ -57,7 +57,7 @@ public class PontoColetaService {
         if (pontoColetaExiste.isPresent()) {
             return new PontoColetaResponseDTO(pontoColetaExiste.get());
         }  else {
-            throw new RuntimeException("Ponto de coleta não existe!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Ponto de coleta não existe!");
         }
     }
 

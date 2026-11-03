@@ -53,7 +53,7 @@ public class EquipamentoService {
             }
             return equipamentoRepository.save(equipamento);
         } else{
-            throw new RuntimeException("Equipamento não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Equipamento não encontrado!");
         }
     }
 
@@ -63,7 +63,7 @@ public class EquipamentoService {
         if (equipamentoExiste.isPresent()) {
             equipamentoRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Equipamento não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Equipamento não encontrado!");
         }
     }
 
@@ -73,7 +73,7 @@ public class EquipamentoService {
         if (equipamentoExiste.isPresent()) {
             return new EquipamentoResponseDTO(equipamentoExiste.get());
         }  else {
-            throw new RuntimeException("Equipamento não existe!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Equipamento não existe!");
         }
     }
 

@@ -37,7 +37,7 @@ public class InspecaoService {
         if (inspecaoExiste.isPresent()) {
             return inspecaoRepository.save(inspecao);
         } else{
-            throw new RuntimeException("Inspeção não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Inspeção não encontrado!");
         }
     }
 
@@ -47,7 +47,7 @@ public class InspecaoService {
         if (inspecaoExiste.isPresent()) {
             inspecaoRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Inspeção não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Inspeção não encontrado!");
         }
     }
 
@@ -57,7 +57,7 @@ public class InspecaoService {
         if (inspecaoExiste.isPresent()) {
             return new InspecaoResponseDTO(inspecaoExiste.get());
         }  else {
-            throw new RuntimeException("Inspeção não existe!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Inspeção não existe!");
         }
     }
 

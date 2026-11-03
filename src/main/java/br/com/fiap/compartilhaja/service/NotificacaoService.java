@@ -37,7 +37,7 @@ public class NotificacaoService {
         if (notificacaoExiste.isPresent()) {
             return notificacaoRepository.save(notificacao);
         } else{
-            throw new RuntimeException("Notificação não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Notificação não encontrado!");
         }
     }
 
@@ -47,7 +47,7 @@ public class NotificacaoService {
         if (notificacaoExiste.isPresent()) {
             notificacaoRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Notificação não encontrado!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Notificação não encontrado!");
         }
     }
 
@@ -57,7 +57,7 @@ public class NotificacaoService {
         if (notificacaoExiste.isPresent()) {
             return new NotificacaoResponseDTO(notificacaoExiste.get());
         }  else {
-            throw new RuntimeException("Notificação não existe!");
+            throw new br.com.fiap.compartilhaja.exception.ResourceNotFoundException("Notificação não existe!");
         }
     }
 
