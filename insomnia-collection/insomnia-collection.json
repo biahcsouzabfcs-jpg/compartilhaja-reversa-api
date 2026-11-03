@@ -19,7 +19,8 @@
       "name": "Base Environment",
       "data": {
         "base_url": "http://localhost:8080",
-        "token": ""
+        "api_username": "igor",
+        "api_password": ""
       },
       "dataPropertyOrder": {
         "&": [
@@ -27,80 +28,6 @@
           "token"
         ]
       }
-    },
-    {
-      "_id": "fld_00",
-      "_type": "request_group",
-      "parentId": "wrk_compartilhaja",
-      "name": "00 - Autenticação",
-      "description": "Endpoints públicos /sem token/",
-      "metaSortKey": 0
-    },
-    {
-      "_id": "req_00_00",
-      "_type": "request",
-      "parentId": "fld_00",
-      "name": "Registrar usuário ADMIN",
-      "description": "Cria um usuário com papel ADMIN.",
-      "method": "POST",
-      "url": "{{ _.base_url }}/auth/register",
-      "metaSortKey": 0,
-      "headers": [
-        {
-          "name": "Content-Type",
-          "value": "application/json"
-        }
-      ],
-      "parameters": [],
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n  \"nome\": \"Administrador CompartilhaJá\",\n  \"email\": \"admin@compartilhaja.com\",\n  \"senha\": \"admin123\",\n  \"role\": \"ADMIN\"\n}"
-      },
-      "authentication": {}
-    },
-    {
-      "_id": "req_00_01",
-      "_type": "request",
-      "parentId": "fld_00",
-      "name": "Registrar usuário USER",
-      "description": "Cria um usuário com papel USER (consultas).",
-      "method": "POST",
-      "url": "{{ _.base_url }}/auth/register",
-      "metaSortKey": 10,
-      "headers": [
-        {
-          "name": "Content-Type",
-          "value": "application/json"
-        }
-      ],
-      "parameters": [],
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n  \"nome\": \"Usuário Comum\",\n  \"email\": \"usuario@compartilhaja.com\",\n  \"senha\": \"user1234\",\n  \"role\": \"USER\"\n}"
-      },
-      "authentication": {}
-    },
-    {
-      "_id": "req_auth_login",
-      "_type": "request",
-      "parentId": "fld_00",
-      "name": "Login",
-      "description": "",
-      "method": "POST",
-      "url": "{{ _.base_url }}/auth/login",
-      "metaSortKey": 20,
-      "headers": [
-        {
-          "name": "Content-Type",
-          "value": "application/json"
-        }
-      ],
-      "parameters": [],
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n  \"email\": \"admin@compartilhaja.com\",\n  \"senha\": \"admin123\"\n}"
-      },
-      "authentication": {}
     },
     {
       "_id": "fld_01",
@@ -131,9 +58,9 @@
         "text": "{\n  \"nome\": \"Ecoponto Vila Mariana\",\n  \"tipo\": \"ECOPONTO\",\n  \"residuoAceito\": \"ELETRONICOS\",\n  \"cidade\": \"São Paulo\",\n  \"uf\": \"SP\",\n  \"emailContato\": \"ecoponto.vm@compartilhaja.com\",\n  \"capacidadeKg\": 500.0,\n  \"pesoAcumuladoKg\": 0.0,\n  \"limiteAlertaPct\": 80,\n  \"status\": \"ATIVO\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -150,9 +77,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -169,9 +96,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -196,9 +123,9 @@
         "text": "{\n  \"pontoColetaId\": 1,\n  \"nome\": \"Ecoponto Vila Mariana\",\n  \"tipo\": \"ECOPONTO\",\n  \"residuoAceito\": \"ELETRONICOS\",\n  \"cidade\": \"São Paulo\",\n  \"uf\": \"SP\",\n  \"emailContato\": \"ecoponto.vm@compartilhaja.com\",\n  \"capacidadeKg\": 800.0,\n  \"pesoAcumuladoKg\": 120.5,\n  \"limiteAlertaPct\": 80,\n  \"status\": \"ATIVO\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -215,9 +142,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -250,9 +177,9 @@
         "text": "{\n  \"nome\": \"Furadeira de Impacto\",\n  \"categoria\": \"FERRAMENTA\",\n  \"marca\": \"Bosch\",\n  \"modelo\": \"GSB 13 RE\",\n  \"pesoKg\": 1.8,\n  \"estadoConservacao\": \"SEM_CONSERTO\",\n  \"status\": \"AGUARDANDO_INSPECAO\",\n  \"nomeProprietario\": \"Maria Souza\",\n  \"emailProprietario\": \"maria.souza@email.com\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -269,9 +196,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -288,9 +215,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -315,9 +242,9 @@
         "text": "{\n  \"equipamentoId\": 1,\n  \"nome\": \"Furadeira de Impacto\",\n  \"categoria\": \"FERRAMENTA\",\n  \"marca\": \"Bosch\",\n  \"modelo\": \"GSB 13 RE\",\n  \"pesoKg\": 1.8,\n  \"estadoConvervacao\": \"SEM_CONSERTO\",\n  \"status\": \"INSPECIONADO\",\n  \"nomeProprietario\": \"Maria Souza\",\n  \"emailProprietario\": \"maria.souza@email.com\",\n  \"dataCadastro\": \"2026-11-03\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -334,9 +261,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -369,9 +296,9 @@
         "text": "{\n  \"equipamentoId\": 1,\n  \"dataInspecao\": \"2026-11-03\",\n  \"responsavel\": \"Técnico João Lima\",\n  \"resultado\": \"DESCARTE\",\n  \"possuiBateria\": \"NAO\",\n  \"descricaoAvarias\": \"Motor queimado e carcaça trincada\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -388,9 +315,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -407,9 +334,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -434,9 +361,9 @@
         "text": "{\n  \"inspecaoId\": 1,\n  \"equipamentoId\": 1,\n  \"dataInspecao\": \"2026-11-03\",\n  \"responsavel\": \"Técnico João Lima\",\n  \"resultado\": \"DESCARTE\",\n  \"possuiBateria\": \"NAO\",\n  \"descricaoAvarias\": \"Motor queimado, carcaça trincada e cabo danificado\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -453,9 +380,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -488,9 +415,9 @@
         "text": "{\n  \"equipamentoId\": 1,\n  \"inspecaoId\": 1,\n  \"pontoColetaId\": 1,\n  \"destinacao\": \"RECICLAGEM\",\n  \"pesoKg\": 1.8,\n  \"status\": \"REGISTRADO\",\n  \"numeroCertificado\": null,\n  \"dataRegistro\": \"2026-11-03\",\n  \"dataConclusao\": null\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -507,9 +434,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -526,9 +453,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -553,9 +480,9 @@
         "text": "{\n  \"descarteId\": 1,\n  \"equipamentoId\": 1,\n  \"inspecaoId\": 1,\n  \"pontoColetaId\": 1,\n  \"destinacao\": \"RECICLAGEM\",\n  \"pesoKg\": 1.8,\n  \"status\": \"CONCLUIDO\",\n  \"numeroCertificado\": \"CERT-2026-0001\",\n  \"dataRegistro\": \"2026-11-03\",\n  \"dataConclusao\": \"2026-11-10\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -572,9 +499,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -607,9 +534,9 @@
         "text": "{\n  \"equipamentoId\": 1,\n  \"pontoColetaId\": 1,\n  \"descarteId\": 1,\n  \"tipo\": \"DESTINACAO_CONCLUIDA\",\n  \"destinatarioEmail\": \"maria.souza@email.com\",\n  \"assunto\": \"Seu equipamento foi reciclado\",\n  \"mensagem\": \"A Furadeira de Impacto foi encaminhada para reciclagem no Ecoponto Vila Mariana.\",\n  \"statusEnvio\": \"PENDENTE\",\n  \"dataCriacao\": \"2026-11-03\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -626,9 +553,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -645,9 +572,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -672,9 +599,9 @@
         "text": "{\n  \"notificacaoId\": 1,\n  \"equipamentoId\": 1,\n  \"pontoColetaId\": 1,\n  \"descarteId\": 1,\n  \"tipo\": \"DESTINACAO_CONCLUIDA\",\n  \"destinatarioEmail\": \"maria.souza@email.com\",\n  \"assunto\": \"Seu equipamento foi reciclado\",\n  \"mensagem\": \"A Furadeira de Impacto foi encaminhada para reciclagem no Ecoponto Vila Mariana.\",\n  \"statusEnvio\": \"ENVIADA\",\n  \"dataCriacao\": \"2026-11-03\"\n}"
       },
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -691,9 +618,9 @@
       "parameters": [],
       "body": {},
       "authentication": {
-        "type": "bearer",
-        "token": "{{ _.token }}",
-        "prefix": "",
+        "type": "basic",
+        "username": "{{ _.api_username }}",
+        "password": "{{ _.api_password }}",
         "disabled": false
       }
     },
@@ -709,7 +636,7 @@
       "_id": "req_06_00",
       "_type": "request",
       "parentId": "fld_06",
-      "name": "Listar equipamentos SEM token (espera 403)",
+      "name": "Listar equipamentos SEM credenciais (espera 401)",
       "description": "s/ header Authorization  nega o acesso.",
       "method": "GET",
       "url": "{{ _.base_url }}/api/equipamentos",
@@ -717,7 +644,9 @@
       "headers": [],
       "parameters": [],
       "body": {},
-      "authentication": {}
+      "authentication": {
+        "type": "none"
+      }
     }
   ]
 }
